@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>成绩计算器</title>
+    <style>
+        body {
+            font-family: Arial;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .subject {
+            margin: 8px 0;
+        }
+        label {
+            display: inline-block;
+            width: 100px;
+        }
+        input {
+            width: 60px;
+            padding: 5px;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 5px;
+            font-size: 16px;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e8f5e8;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>成绩计算器</h1>
+
+    <h2>上半年成绩</h2>
+    <div class="subject"><label>数学:</label><input type="number" id="math1" value="80"></div>
+    <div class="subject"><label>科学:</label><input type="number" id="sc1" value="80"></div>
+    <div class="subject"><label>地理:</label><input type="number" id="geo1" value="80"></div>
+    <div class="subject"><label>华文:</label><input type="number" id="ch1" value="92"></div>
+    <div class="subject"><label>马来文:</label><input type="number" id="bm1" value="80"></div>
+    <div class="subject"><label>英文:</label><input type="number" id="eng1" value="83"></div>
+    <div class="subject"><label>历史:</label><input type="number" id="his1" value="80"></div>
+    <div class="subject"><label>美术:</label><input type="number" id="art1" value="89"></div>
+    <div class="subject"><label>电脑:</label><input type="number" id="compu1" value="80"></div>
+    <div class="subject"><label>辅导:</label><input type="number" id="conse1" value="68"></div>
+    <div class="subject"><label>体育:</label><input type="number" id="pe1" value="80"></div>
+    <div class="subject"><label>联课:</label><input type="number" id="co1" value="68"></div>
+
+    <button onclick="calculateSemester1()">计算上半年成绩</button>
+
+    <h2>下半年成绩</h2>
+    <div class="subject"><label>数学:</label><input type="number" id="math2" value="70"></div>
+    <div class="subject"><label>科学:</label><input type="number" id="sc2" value="70"></div>
+    <div class="subject"><label>地理:</label><input type="number" id="geo2" value="70"></div>
+    <div class="subject"><label>华文:</label><input type="number" id="ch2" value="0"></div>
+    <div class="subject"><label>马来文:</label><input type="number" id="bm2" value="0"></div>
+    <div class="subject"><label>英文:</label><input type="number" id="eng2" value="0"></div>
+    <div class="subject"><label>历史:</label><input type="number" id="his2" value="0"></div>
+    <div class="subject"><label>美术:</label><input type="number" id="art2" value="0"></div>
+    <div class="subject"><label>电脑:</label><input type="number" id="compu2" value="0"></div>
+    <div class="subject"><label>辅导:</label><input type="number" id="conse2" value="0"></div>
+    <div class="subject"><label>体育:</label><input type="number" id="pe2" value="0"></div>
+    <div class="subject"><label>联课:</label><input type="number" id="co2" value="0"></div>
+
+    <button onclick="calculateSemester2()">计算下半年成绩</button>
+    <button onclick="calculateFinal()" style="background:#e74c3c">计算最终总平均</button>
+
+    <div id="result"></div>
+
+    <script>
+        let sem1Result = 0;
+        let sem2Result = 0;
+
+        // 简单测试函数
+        function testButton() {
+            alert("按钮可以点击！");
+            document.getElementById('result').innerHTML = "按钮工作正常！";
+        }
+
+        function calculateSemester1() {
+            alert("正在计算上半年成绩...");
+
+            const math = Number(document.getElementById('math1').value) || 0;
+            const sc = Number(document.getElementById('sc1').value) || 0;
+            const geo = Number(document.getElementById('geo1').value) || 0;
+            const ch = Number(document.getElementById('ch1').value) || 0;
+            const bm = Number(document.getElementById('bm1').value) || 0;
+            const eng = Number(document.getElementById('eng1').value) || 0;
+            const his = Number(document.getElementById('his1').value) || 0;
+            const art = Number(document.getElementById('art1').value) || 0;
+            const compu = Number(document.getElementById('compu1').value) || 0;
+            const conse = Number(document.getElementById('conse1').value) || 0;
+            const pe = Number(document.getElementById('pe1').value) || 0;
+            const co = Number(document.getElementById('co1').value) || 0;
+
+            // 你的原始计算公式
+            const total = (ch * 7 + bm * 7 + eng * 7 + math * 7 + his * 3 + geo * 3 +
+                          art * 1 + compu * 2 + conse * 1 + pe * 2 + co * 2 + sc * 6) / 48;
+
+            sem1Result = total;
+            document.getElementById('result').innerHTML = "上半年成绩: " + total.toFixed(2);
+            alert("上半年成绩: " + total.toFixed(2));
+        }
+
+        function calculateSemester2() {
+            alert("正在计算下半年成绩...");
+
+            const math = Number(document.getElementById('math2').value) || 0;
+            const sc = Number(document.getElementById('sc2').value) || 0;
+            const geo = Number(document.getElementById('geo2').value) || 0;
+            const ch = Number(document.getElementById('ch2').value) || 0;
+            const bm = Number(document.getElementById('bm2').value) || 0;
+            const eng = Number(document.getElementById('eng2').value) || 0;
+            const his = Number(document.getElementById('his2').value) || 0;
+            const art = Number(document.getElementById('art2').value) || 0;
+            const compu = Number(document.getElementById('compu2').value) || 0;
+            const conse = Number(document.getElementById('conse2').value) || 0;
+            const pe = Number(document.getElementById('pe2').value) || 0;
+            const co = Number(document.getElementById('co2').value) || 0;
+
+            const total = (ch * 7 + bm * 7 + eng * 7 + math * 7 + his * 3 + geo * 3 +
+                          art * 1 + compu * 2 + conse * 1 + pe * 2 + co * 2 + sc * 6) / 48;
+
+            sem2Result = total;
+            document.getElementById('result').innerHTML = "下半年成绩: " + total.toFixed(2);
+            alert("下半年成绩: " + total.toFixed(2));
+        }
+
+        function calculateFinal() {
+            if (sem1Result === 0 || sem2Result === 0) {
+                alert("请先计算两个学期的成绩！");
+                return;
+            }
+
+            const final = (sem1Result + sem2Result) / 2;
+            document.getElementById('result').innerHTML =
+                "上半年: " + sem1Result.toFixed(2) + "<br>" +
+                "下半年: " + sem2Result.toFixed(2) + "<br>" +
+                "最终平均: " + final.toFixed(2);
+        }
+    </script>
+</body>
+</html>
